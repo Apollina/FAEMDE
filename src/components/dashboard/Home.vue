@@ -4,7 +4,7 @@
       <VideoCall/>
     </vs-col>
     <vs-col  class="agent-rank" vs-type="-webkit-box" vs-justify="left" vs-align="center" vs-w="6">
-      <AgentRank/>
+
     </vs-col>
     <vs-col vs-type="grid" vs-justify="center" vs-align="center" vs-w="6">
       User Info
