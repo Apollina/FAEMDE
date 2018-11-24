@@ -83,14 +83,15 @@ export default {
         return;
       }
 
-      console.info('Sending message...', message);
       this.messageList = [ ...this.messageList, message ]
-      message.autor = 'support'
 
       axios
-        .post('http://localhost:5000/chat/send_message', message)
+        .post('http://localhost:5000/chat/send_message', {
+          author: 'support',
+          data: { text: message.data.text }
+        })
         .then(function (response) {
-          console.log('Response is', response);
+          //console.log('Response is', response);
         })
         .catch(function (error) {
           console.log(error);
@@ -119,7 +120,7 @@ export default {
               messages.data[msg_idx].author = 'me'
             }
           }
-          console.log('Got messages:', messages.data);
+          //console.log('Got messages:', messages.data);
           this.messageList = messages.data;
         })
         .catch((error) => { console.log(error);})
