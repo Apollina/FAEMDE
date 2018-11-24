@@ -5,6 +5,7 @@
         <h1>Current Camera</h1>
         <code v-if="device">{{ device.label }}</code>
         <div class="border">
+          <BoundingBox :feelings="feelings" :bbox="bbox" />
           <web-cam ref="webcam"
                 width="100%"
                 :deviceId="deviceId"
@@ -43,18 +44,22 @@
 import {WebCam} from 'vue-web-cam'
 import {find, head} from 'lodash'
 import axios from 'axios'
+import BoundingBox from './BoundingBox.vue';
 
 export default {
   name: 'VideoCall',
-  components: {
-    WebCam
-  },
+  components: {WebCam, BoundingBox},
   data () {
     return {
       img: null,
       camera: null,
       deviceId: null,
-      devices: []
+      devices: [],
+      bbox: [0,0,20,20],
+      feelings: {
+        anger: 0,
+        happiness: 0
+      }
     }
   },
   computed: {
@@ -106,15 +111,32 @@ export default {
   },
 
   mounted () {
+    // Emotion recognition
     setInterval(() => {
       let image = this.$refs.webcam.capture()
 
-      axios.post('http://127.0.0.1:5001/analyse_emotions', image, {
-        headers: { 'Content-Type': 'text/plain' }
-      })
-        .then((response) => { saveFeelings(response.data) })
-        .catch((error) => { console.log(error) })
-    }, 1000)
+        axios.post('http://127.0.0.1:5001/analyse_emotions', image, {
+          headers: { 'Content-Type': 'text/plain' }
+        })
+        .then((response) => {
+          this.feelings = response.data;
+          saveFeelings(response.data);
+        })
+        .catch((error) => { console.log(error); });
+      }, 1000);
+
+    // Face detection
+    setInterval(() => {
+        let image = this.$refs.webcam.capture();
+
+        axios.post('http://127.0.0.1:5001/find_faces', image, {
+          headers: { 'Content-Type': 'text/plain' }
+        })
+        .then((response) => {
+          this.bbox = head(response.data);
+        })
+        .catch((error) => { console.log(error); });
+      }, 1000);
   }
 }
 
