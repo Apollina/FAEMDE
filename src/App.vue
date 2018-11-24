@@ -3,6 +3,7 @@
   <div id="app">
     <Header/>
     <router-view/>
+    <VideoCall />
     <Footer/>
     <SupportChat/>
   </div>
@@ -12,10 +13,11 @@
 import Footer from './components/main/Footer'
 import Header from './components/main/Header'
 import SupportChat from './components/SupportChat'
+import VideoCall from './components/VideoCall'
 
 export default {
   name: 'App',
-  components: {Header, Footer, SupportChat}
+  components: {Header, Footer, SupportChat, VideoCall}
 }
 </script>
 
