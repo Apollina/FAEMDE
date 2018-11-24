@@ -1,46 +1,56 @@
 <template>
   <div class="chart">
     <h1>Chart</h1>
-    <line-chart :chart-data="datacollection"></line-chart>
-    <button @click="fillData()">Randomize</button>
+    <line-chart :chart-data="data"></line-chart>
   </div>
 </template>
 
 <script>
 import LineChart from './LineChart.js'
+import axios from 'axios'
 
 export default {
   name: 'UserHappyChart',
-  components: {
-    LineChart
-  },
+  components: { LineChart },
+
   data () {
     return {
-      datacollection: null
+      data: null,
     }
   },
+
   mounted () {
-    this.fillData()
+    setInterval(() => {
+      this.updateData();
+    }, 1000)
   },
+
   methods: {
-    fillData () {
-      this.datacollection = {
-        labels: [this.getRandomInt(), this.getRandomInt()],
-        datasets: [
-          {
-            label: 'Video Customer',
-            backgroundColor: '#f87979',
-            data: [this.getRandomInt(), this.getRandomInt()]
-          }, {
-            label: 'Chat Customer',
-            backgroundColor: '#b2b2ff',
-            data: [this.getRandomInt(), this.getRandomInt()]
+    updateData () {
+      axios
+        .get('http://localhost:5000/video/get_feelings')
+        .then((response) => {
+          let angerStats = response.data.map((s) => s.angriness);
+          let happinessStats = response.data.map((s) => s.happiness);
+
+          angerStats = angerStats.slice(angerStats.length - 50, angerStats.length);
+          happinessStats = happinessStats.slice(happinessStats.length - 50, happinessStats.length);
+
+
+          this.data = {
+            datasets: [
+              {
+                label: 'Happiness',
+                borderColor: '#f87979',
+                fill: true,
+                showLine: true,
+                backgroundColor: '#f87979',
+                data: happinessStats.map((s, i) => ({x: i, y: s}))
+              }
+            ]
           }
-        ]
-      }
-    },
-    getRandomInt () {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+        })
+        .catch((err) => { console.error(err); });
     }
   }
 }
@@ -48,10 +58,9 @@ export default {
 
 <style>
   .chart {
-    margin:  150px auto;
   }
   .chartjs-render-monitor {
-    height: 400px;
+    height: 700px !important;
     width: 600px;
   }
 </style>

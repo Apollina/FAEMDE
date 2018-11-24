@@ -1,13 +1,14 @@
 <template>
-  <vs-row>
+  <vs-row class="page">
     <vs-col class="video-call" vs-type="block" vs-justify="center" vs-align="center" vs-w="6">
       <VideoCall/>
     </vs-col>
-    <vs-col class="chart-container" vs-type="grid" vs-justify="center" vs-align="center" vs-w="6">
+    <vs-col class="chart-container" vs-type="block" vs-justify="center" vs-align="center" vs-w="6">
       <UserHappyChart/>
     </vs-col>
-    <vs-col  class="agent-rank" vs-type="block" vs-justify="left" vs-align="center" vs-w="12">
+    <vs-col  class="agent-rank" vs-type="flex" vs-justify="left" vs-align="center" vs-w="12">
     <!-- <AgentRank/> -->
+      <AgentsRanks/>
     </vs-col>
   </vs-row>
 
@@ -16,22 +17,28 @@
 import UserHappyChart from '../utils/UserHappyChart'
 import VideoCall from '../VideoCall'
 import AgentRank from '../utils/AgentRank'
+import AgentsRanks from '../utils/AgentsRanks'
 
 export default {
   name: 'Home',
-  components: {AgentRank, VideoCall, UserHappyChart}
+  components: {AgentsRanks, AgentRank, VideoCall, UserHappyChart}
 }
 </script>
 
 <style scoped>
 
+  .page {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .chart-container {
   }
-  .video-call {
-    padding-top: 70px;
+  .video-call, .chart-container {
+    padding: 20px 20px 0 20px;
   }
   .agent-rank {
-    padding: 0 100px 80px 100px;
+    padding: 70px 100px 120px 100px;
   }
 
 </style>

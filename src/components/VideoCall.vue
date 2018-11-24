@@ -31,7 +31,6 @@
         </div>
       </div>
       <div class="col-md-6">
-        <h2>Captured Image</h2>
         <figure class="figure">
           <img :src="img" class="img-responsive" />
         </figure>
@@ -48,7 +47,7 @@ import BoundingBox from './BoundingBox.vue';
 
 export default {
   name: 'VideoCall',
-  components: {WebCam, BoundingBox},
+  components: { WebCam, BoundingBox},
   data () {
     return {
       img: null,
@@ -160,3 +159,10 @@ function saveFeelings (feelings) {
 }
 
 </script>
+
+<style>
+  video {
+    padding-top: 50px;
+    height: auto !important;
+  }
+</style>

@@ -9,39 +9,39 @@
 
 <script>
 export default {
-    name: "BoundingBox",
-    props: ["bbox", "feelings"],
+  name: 'BoundingBox',
+  props: ['bbox', 'feelings'],
 
-    watch: {
-        bbox(bbox) {
-            if (!bbox) {
-                return;
-            }
-            this.styleObject = {
-                top: bbox[1] + 'px',
-                left: bbox[0] + 'px',
-                width: bbox[2] + 'px',
-                height: bbox[3] + 20 + 'px'
-            }
-        },
-        feelings(feelings) {
-            this.anger = feelings.anger.toFixed(2);
-            this.happiness = feelings.happiness.toFixed(2);
-        }
+  watch: {
+    bbox (bbox) {
+      if (!bbox) {
+        return
+      }
+      this.styleObject = {
+        top: bbox[1] + 'px',
+        left: bbox[0] + 'px',
+        width: bbox[2] + 'px',
+        height: bbox[3] + 20 + 'px'
+      }
     },
-
-    data() {
-        return {
-            styleObject: {
-                top: this.top + 'px',
-                left: this.left + 'px',
-                width: this.width + 'px',
-                height: this.height + 'px'
-            },
-            anger: 0,
-            happiness: 0
-        }
+    feelings (feelings) {
+      this.anger = feelings.anger.toFixed(2)
+      this.happiness = feelings.happiness.toFixed(2)
     }
+  },
+
+  data () {
+    return {
+      styleObject: {
+        top: this.top + 'px',
+        left: this.left + 'px',
+        width: this.width + 'px',
+        height: this.height + 'px'
+      },
+      anger: 0,
+      happiness: 0
+    }
+  }
 }
 </script>
 
