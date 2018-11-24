@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h2>Current Camera</h2>
+        <h1>Current Camera</h1>
         <code v-if="device">{{ device.label }}</code>
         <div class="border">
           <web-cam ref="webcam"

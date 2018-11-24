@@ -1,32 +1,25 @@
 <template lang="html">
   <div>
-    <vs-table :data="users">
+    <vs-table :data="users" style="text-align: left">
       <template slot="header">
-        <h3>
-          Users
-        </h3>
+        <h1>
+          Agent Ranks
+        </h1>
       </template>
       <template slot="thead">
-        <vs-th>
-          Email
-        </vs-th>
         <vs-th>
           Name
         </vs-th>
         <vs-th>
-          Website
+          Place
         </vs-th>
         <vs-th>
-          Nro
+          Score
         </vs-th>
       </template>
 
       <template slot-scope="{data}">
         <vs-tr :key="indextr" v-for="(tr, indextr) in data" >
-          <vs-td :data="data[indextr].email">
-            {{data[indextr].email}}
-          </vs-td>
-
           <vs-td :data="data[indextr].username">
             {{data[indextr].name}}
           </vs-td>
@@ -36,7 +29,9 @@
           </vs-td>
 
           <vs-td :data="data[indextr].id">
-            {{data[indextr].website}}
+            <star-rating :rating="data[indextr].score" v-bind:star-size="17" :read-only="true" :increment="0.01"
+                         :border-width="0" active-color="#8AC939"
+                         :star-points="[23,1, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
           </vs-td>
         </vs-tr>
       </template>
@@ -45,80 +40,64 @@
 </template>
 
 <script>
+import StarRating from 'vue-star-rating'
 export default {
   name: 'AgentRank',
+  components: {
+    StarRating
+  },
   data: function () {
     return {
       users: [
         {
           'id': 1,
-          'name': 'Leanne Graham',
-          'username': 'Bret',
-          'email': 'Sincere@april.biz',
-          'website': 'hildegard.org'
+          'name': 'Hortensia Giammarino',
+          'score': 5
         },
         {
           'id': 2,
-          'name': 'Ervin Howell',
-          'username': 'Antonette',
-          'email': 'Shanna@melissa.tv',
-          'website': 'anastasia.net'
+          'name': 'Cheri Rhem',
+          'score': 4.28
         },
         {
           'id': 3,
-          'name': 'Clementine Bauch',
-          'username': 'Samantha',
-          'email': 'Nathan@yesenia.net',
-          'website': 'ramiro.info'
+          'name': 'Merri Marzette',
+          'score': 4.00
         },
         {
           'id': 4,
-          'name': 'Patricia Lebsack',
-          'username': 'Karianne',
-          'email': 'Julianne.OConner@kory.org',
-          'website': 'kale.biz'
+          'name': 'Hedy Verdin',
+          'score': 3.5
         },
         {
           'id': 5,
-          'name': 'Chelsey Dietrich',
-          'username': 'Kamren',
-          'email': 'Lucio_Hettinger@annie.ca',
-          'website': 'demarco.info'
+          'name': 'Manual Ernst',
+          'score': 3.15
         },
         {
           'id': 6,
-          'name': 'Mrs. Dennis Schulist',
-          'username': 'Leopoldo_Corkery',
-          'email': 'Karley_Dach@jasper.info',
-          'website': 'ola.org'
+          'name': 'Lanell Pratt',
+          'score': 2.95
         },
         {
           'id': 7,
-          'name': 'Kurtis Weissnat',
-          'username': 'Elwyn.Skiles',
-          'email': 'Telly.Hoeger@billy.biz',
-          'website': 'elvis.io'
+          'name': 'Shaun Hauer',
+          'score': 2.60
         },
         {
           'id': 8,
-          'name': 'Nicholas Runolfsdottir V',
-          'username': 'Maxime_Nienow',
-          'email': 'Sherwood@rosamond.me',
-          'website': 'jacynthe.com'
+          'name': 'Cornelius Woo',
+          'score': 2.10
         },
         {
           'id': 9,
-          'name': 'Glenna Reichert',
-          'username': 'Delphine',
-          'email': 'Chaim_McDermott@dana.io',
-          'website': 'conrad.com'
+          'name': 'Lynn Bouffard',
+          'score': 1.89
         },
         {
           'id': 10,
-          'name': 'Clementina DuBuque',
-          'username': 'Moriah.Stanton',
-          'email': 'Rey.Padberg@karina.biz',
-          'website': 'ambrose.net'
+          'name': 'Novella Daughdrill',
+          'score': 0.5
         }
       ]
     }

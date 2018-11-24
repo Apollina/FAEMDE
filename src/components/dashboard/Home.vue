@@ -1,16 +1,15 @@
 <template>
   <vs-row>
-    <vs-col vs-type="grid" vs-justify="center" vs-align="center" vs-w="6">
-      Video
+    <vs-col class="video-call" vs-type="block" vs-justify="center" vs-align="center" vs-w="6">
+      <VideoCall/>
     </vs-col>
-    <vs-col vs-type="grid" vs-justify="center" vs-align="center" vs-w="6">
-      <SupportChat/>
+    <vs-col  class="agent-rank" vs-type="-webkit-box" vs-justify="left" vs-align="center" vs-w="6">
+      <AgentRank/>
     </vs-col>
     <vs-col vs-type="grid" vs-justify="center" vs-align="center" vs-w="6">
       User Info
     </vs-col>
     <vs-col vs-type="grid" vs-justify="center" vs-align="center" vs-w="6">
-      Agents Ranks
     </vs-col>
     <vs-col class="chart-container" vs-type="grid" vs-justify="left" vs-align="left" vs-w="12">
       <UserHappyChart/>
@@ -18,14 +17,14 @@
   </vs-row>
 
 </template>
-
 <script>
-import SupportChat from '../utils/SupportChat'
 import UserHappyChart from '../utils/UserHappyChart'
+import VideoCall from '../VideoCall'
+import AgentRank from '../utils/AgentRank'
 
 export default {
   name: 'Home',
-  components: {UserHappyChart, SupportChat}
+  components: {AgentRank, VideoCall, UserHappyChart}
 }
 </script>
 
@@ -33,6 +32,9 @@ export default {
 
   .chart-container {
     padding: 50px;
+  }
+  .video-call, .agent-rank {
+    padding-top: 70px;
   }
 
 </style>
