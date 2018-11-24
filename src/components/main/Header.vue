@@ -13,10 +13,10 @@
       <vs-spacer></vs-spacer>
 
       <vs-navbar-item index="0">
-        <a href="#">Home</a>
+        <router-link to="/">Home</router-link>
       </vs-navbar-item>
       <vs-navbar-item index="1">
-        <a href="#">About us</a>
+        <router-link to="/about">About Us</router-link>
       </vs-navbar-item>
     </vs-navbar>
   </div>
