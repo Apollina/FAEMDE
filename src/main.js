@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+
+Vue.use(Vuesax)
 
 Vue.config.productionTip = false
 
