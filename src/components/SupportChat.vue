@@ -65,7 +65,7 @@ export default {
           text: '#565867'
         }
       }, // specifies the color scheme for the component
-      alwaysScrollToBottom: true,
+      alwaysScrollToBottom: false,
       messageStyling: true // enables *bold* /emph/ _underline_ and such (more info at github.com/mattezza/msgdown)
     }
   },
