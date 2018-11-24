@@ -1,23 +1,20 @@
-
 <template>
   <div id="app">
     <Header/>
     <router-view/>
     <VideoCall />
     <Footer/>
-    <SupportChat/>
   </div>
 </template>
 
 <script>
 import Footer from './components/main/Footer'
 import Header from './components/main/Header'
-import SupportChat from './components/SupportChat'
 import VideoCall from './components/VideoCall'
 
 export default {
   name: 'App',
-  components: {Header, Footer, SupportChat, VideoCall}
+  components: {Header, Footer, VideoCall}
 }
 </script>
 

@@ -39,7 +39,7 @@ export default {
       titleImageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
       messageList: [], // the list of the messages to show, can be paginated and adjusted dynamically
       newMessagesCount: 0,
-      isChatOpen: true, // to determine whether the chat window should be open or closed
+      isChatOpen: false, // to determine whether the chat window should be open or closed
       showTypingIndicator: '', // when set to a value matching the participant.id it shows the typing indicator for the specific user
       colors: {
         header: {
