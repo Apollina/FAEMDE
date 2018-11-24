@@ -17,7 +17,11 @@
     "material-icons": "^0.2.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuesax": "^3.8.0"
+    "vuesax": "^3.8.0",
+    "axios": "^0.18.0",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "vue-beautiful-chat": "^2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

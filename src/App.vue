@@ -4,6 +4,7 @@
     <Header/>
     <router-view/>
     <Footer/>
+    <SupportChat/>
   </div>
 </template>
 
@@ -12,7 +13,7 @@ import Footer from './components/main/Footer'
 import Header from './components/main/Header'
 export default {
   name: 'App',
-  components: {Header, Footer}
+  components: {Header, Footer, SupportChat}
 }
 </script>
 
