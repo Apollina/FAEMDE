@@ -82,6 +82,10 @@ export default {
   },
   methods: {
     onCapture () {
+      if (this.$refs.webcam == null) {
+        return;
+      }
+
       this.img = this.$refs.webcam.capture()
     },
     onStarted (stream) {
@@ -113,9 +117,13 @@ export default {
   mounted () {
     // Emotion recognition
     setInterval(() => {
+      if (this.$refs.webcam == null) {
+        return;// console.error('Webcam is not available!');
+      }
+
       let image = this.$refs.webcam.capture()
 
-        axios.post('http://127.0.0.1:5001/analyse_emotions', image, {
+      axios.post('http://127.0.0.1:5001/analyse_emotions', image, {
           headers: { 'Content-Type': 'text/plain' }
         })
         .then((response) => {
@@ -127,6 +135,10 @@ export default {
 
     // Face detection
     setInterval(() => {
+        if (this.$refs.webcam == null) {
+          return;// console.error('Webcam is not available!');
+        }
+
         let image = this.$refs.webcam.capture();
 
         axios.post('http://127.0.0.1:5001/find_faces', image, {
@@ -143,7 +155,7 @@ export default {
 function saveFeelings (feelings) {
   axios
     .post('http://127.0.0.1:5000/video/send_feelings', feelings)
-    .then((response) => { console.log('Feelings are save!') })
+    .then((response) => { /*console.log('Feelings are save!')*/ })
     .catch((error) => { console.log(error) })
 }
 

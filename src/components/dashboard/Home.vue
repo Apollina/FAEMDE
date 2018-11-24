@@ -7,7 +7,7 @@
       <UserHappyChart/>
     </vs-col>
     <vs-col  class="agent-rank" vs-type="block" vs-justify="left" vs-align="center" vs-w="12">
-    <AgentRank/>
+    <!-- <AgentRank/> -->
     </vs-col>
   </vs-row>
 
