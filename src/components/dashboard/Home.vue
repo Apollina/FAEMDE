@@ -4,7 +4,7 @@
       Video
     </vs-col>
     <vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-w="6">
-      Chat
+      <SupportChat/>
     </vs-col>
     <vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-w="6">
       User Info
@@ -20,8 +20,10 @@
 </template>
 
 <script>
+  import SupportChat from '../SupportChat'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {SupportChat}
 }
 </script>
 
