@@ -112,10 +112,17 @@ export default {
         axios.post('http://127.0.0.1:5001/analyse_emotions', image, {
           headers: { 'Content-Type': 'text/plain' }
         })
-        .then((response) => { /*console.log(response.data);*/ })
+        .then((response) => { saveFeelings(response.data); })
         .catch((error) => { console.log(error); });
       }, 1000);
   }
-
 };
+
+function saveFeelings(feelings) {
+  axios
+    .post('http://127.0.0.1:5000/video/send_feelings', feelings)
+    .then((response) => { /*console.log('Feelings are save!');*/ })
+    .catch((error) => { console.log(error); });
+}
+
 </script>
