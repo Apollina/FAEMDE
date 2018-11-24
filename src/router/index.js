@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/dashboard/Home'
 import AboutUs from '@/components/dashboard/AboutUs'
-
+import SupportChat from '@/components/SupportChat'
 
 Vue.use(Router)
 
@@ -17,6 +17,11 @@ export default new Router({
       path: '/about',
       name: 'AboutUs',
       component: AboutUs
+    },
+    {
+      path: '/',
+      name: 'SupportChat',
+      component: SupportChat
     }
   ]
 })
