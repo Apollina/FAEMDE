@@ -1,6 +1,8 @@
-# faemdejunction2018
+# CSAI - Customer Satisfaction AI
 
-> A Vue.js project for Junction 2018
+## Improve and gamify the way businesses treat customer's satisfaction.  
+
+> The front end of the project for [HackJunction2018](https://hackjunction.com/). 
 
 ## Build Setup
 
